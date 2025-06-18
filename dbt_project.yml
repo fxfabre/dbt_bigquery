@@ -10,7 +10,7 @@ dbt-cloud:
     project-id: 70471823474973
 
 # This setting configures which "profile" dbt uses for this project.
-profile: 'bigquery_fx'
+profile: 'bigquery_test'
 
 # These configurations specify where dbt should look for different types of files.
 # The `model-paths` config, for example, states that models in this project can be
@@ -39,7 +39,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 
 models:
-  my_new_project:
-    # Applies to all files under models/example/
-    example:
+  dbt_bigquery:
+    silver_dbt_sample:
       +materialized: table
+      +dataset: SLV_STRIPE
+    silver_stripe:
+      +materialized: table
+      +dataset: SLV_STRIPE
+    silver_jaffle_shop:
+      +materialized: view
+      +dataset: SLV_JAFFLE_SHOP
