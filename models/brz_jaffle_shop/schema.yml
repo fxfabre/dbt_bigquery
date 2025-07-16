@@ -1,6 +1,21 @@
 
 version: 2
 
+sources:
+  - name: jaffle_shop
+    database: dbt-tutorial
+    schema: jaffle_shop
+    quoting:
+      database: true
+      schema: true
+      identifier: true
+    tables:
+      - name: customers
+      - name: orders
+
 models:
-  - name: customers
-    description: "View to replicate data from DBT sample"
+  - name: brz_jaffle_shop__customers
+    description: "Jaffle shop customers"
+
+  - name: brz_jaffle_shop__orders
+    description: "Jaffle shop orders"

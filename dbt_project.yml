@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'my_new_project'
+name: 'dbt_bigquery'
 version: '1.0.0'
 config-version: 2
 
@@ -40,12 +40,24 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   dbt_bigquery:
+    staging:
+      jaffle_shop:
+        +materialized: table
+        +dataset: STG_JAFFLE_SHOP
+    brz_jaffle_shop:
+      +materialized: table
+      +dataset: BRZ_JAFFLE_SHOP
+    brz_stripe:
+      +materialized: view
+      +dataset: BRZ_STRIPE
+
     silver_dbt_sample:
       +materialized: table
-      +dataset: SLV_STRIPE
+      +dataset: SLV_DBT_SAMPLE
     silver_stripe:
       +materialized: table
       +dataset: SLV_STRIPE
-    silver_jaffle_shop:
-      +materialized: view
-      +dataset: SLV_JAFFLE_SHOP
+
+vars:
+  'dbt_source_config':
+    create_schemas: false

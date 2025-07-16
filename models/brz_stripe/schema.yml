@@ -1,0 +1,6 @@
+
+version: 2
+
+models:
+  - name: payment
+    description: "Jaffle shop customers"
